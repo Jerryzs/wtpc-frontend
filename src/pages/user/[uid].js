@@ -1,5 +1,4 @@
 import Error from 'next/error';
-
 import { NextSeo } from 'next-seo';
 
 import ProfilePanel from '../../components/ProfilePanel';
