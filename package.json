@@ -1,0 +1,48 @@
+{
+  "name": "wtpc-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/Jerryzs/programming-club-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "semistandard && next",
+    "build": "next build",
+    "start": "next start",
+    "format": "semistandard --fix"
+  },
+  "author": "Jerry <zhangs@winchesterthurston.org>",
+  "contributors": [],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "google-auth-library": "^6.1.3",
+    "jquery": "^3.5.1",
+    "next": "^10.0.0",
+    "next-seo": "^4.15.0",
+    "popper.js": "^1.16.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-markdown": "^5.0.2",
+    "react-syntax-highlighter": "^15.3.0",
+    "remark-gfm": "^1.0.0",
+    "sass": "^1.28.0",
+    "swr": "^0.3.8"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.55",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "semistandard": "^14.2.3"
+  },
+  "semistandard": {
+    "globals": [
+      "$0",
+      "CDN",
+      "API"
+    ],
+    "parser": "babel-eslint"
+  },
+  "browser": {
+    "child_process": false
+  }
+}

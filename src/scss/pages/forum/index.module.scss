@@ -1,0 +1,28 @@
+@import "../../mixins";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+
+  > *:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  .blocksWrapper {
+    width: 100%;
+  }
+
+  .divider {
+    margin-bottom: 8px;
+  }
+
+  .category {
+    margin-bottom: 24px;
+  }
+  
+  .profileWrapper {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}

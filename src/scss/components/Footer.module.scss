@@ -1,0 +1,15 @@
+@import '../mixins';
+
+.wrapper {
+  a {
+    text-decoration: none;
+  }
+
+  .copyright {
+    margin-bottom: 36px;
+  }
+
+  .bottomLinks > span {
+    margin: 0 8px;
+  }
+}

@@ -1,0 +1,17 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+
+body {
+  color: #ffffff;
+  font-family: 'Source Code Pro', monospace;
+  background-color: theme-color("dark");
+  margin-bottom: 60px;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
