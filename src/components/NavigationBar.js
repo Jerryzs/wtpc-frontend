@@ -17,8 +17,7 @@ function NavigationBar ({ user, data }) {
   if (user.uid) {
     navs.push({
       name: user.name,
-      href: '/user/[uid]',
-      as: `/user/${user.uid}`
+      href: `/user/${user.uid}`
     });
   } else {
     navs.push({
@@ -58,7 +57,6 @@ function NavigationBar ({ user, data }) {
               >
                 <Link
                   href={item.href}
-                  as={item.as}
                   activeClassName='active'
                 >
                   <a
