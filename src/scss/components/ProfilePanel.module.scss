@@ -1,0 +1,56 @@
+@import '../mixins';
+
+.wrapper {
+  margin-bottom: auto;
+
+  @include media-breakpoint-down(xs) {
+    width: 100% !important;
+    max-width: 500px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: 16px;
+    border: 1px solid #f8f9fa;
+  }
+
+  > *:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 255px;
+  }
+
+  .level {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+
+    > * {
+      margin-right: auto;
+    }
+
+    .exp {
+      font-size: 0.8rem;
+      margin: -4px 0;
+    }
+  }
+
+  .badges > * {
+    margin-right: 8px;
+    margin-top: auto;
+  }
+
+  .bio {
+    font-size: 0.95rem;
+
+    * {
+      margin-bottom: 0.75rem;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
