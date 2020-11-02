@@ -32,7 +32,7 @@
     "@types/react": "^16.9.55",
     "babel-eslint": "^10.1.0",
     "eslint-config-standard": "^13.0.1",
-    "semistandard": "^14.2.3"
+    "semistandard": "^16.0.0"
   },
   "semistandard": {
     "globals": [
