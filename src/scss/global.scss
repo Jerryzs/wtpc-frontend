@@ -1,13 +1,13 @@
 @import "custom";
+@import "vendors/bootswatch/darkly/variables";
 @import "~bootstrap/scss/bootstrap";
+@import "vendors/bootswatch/darkly/bootswatch";
 
 // fonts
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 
 body {
-  color: #ffffff;
   font-family: 'Source Code Pro', monospace;
-  background-color: theme-color("dark");
   margin-bottom: 60px;
 }
 

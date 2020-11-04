@@ -8,7 +8,7 @@ function LargeButton ({ title, description, href }) {
       href={href || '#'}
     >
       <a
-        className={`${styles.wrapper} btn btn-lg btn-block border-light text-light`}
+        className={`${styles.wrapper} btn btn-lg btn-block border-white text-light`}
       >
         <div
           className={styles.title}

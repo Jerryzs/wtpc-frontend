@@ -28,7 +28,7 @@ function NavigationBar ({ user, data }) {
 
   return (
     <nav
-      className={`${styles.wrapper} navbar navbar-expand-md navbar-dark bg-dark`}
+      className={`${styles.wrapper} navbar navbar-expand-md navbar-dark`}
     >
       <div
         className='container-md'
