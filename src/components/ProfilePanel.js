@@ -31,7 +31,7 @@ function ProfilePanel ({ className, large, link, user }) {
 
   return (
     <div
-      className={`${styles.wrapper} rounded ${className}`.trim()}
+      className={`${styles.wrapper} ${className}`.trim()}
       style={{
         width: !large ? '196px' : '255px',
         minWidth: !large ? '196px' : '255px',
