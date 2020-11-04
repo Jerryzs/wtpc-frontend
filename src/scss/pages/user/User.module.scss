@@ -2,20 +2,32 @@
 
 .wrapper {
   display: flex;
-  flex-direction: column;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+  }
 
   @include media-breakpoint-up(md) {
     flex-direction: row;
   }
 
   .profile {
-    margin: {
-      right: 24px;
-      bottom: 24px;
+    margin-bottom: auto;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 24px;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-right: 24px;
     }
   }
 
   .main {
     flex: 1;
+
+    > div {
+      margin-bottom: auto;
+    }
   }
 }
