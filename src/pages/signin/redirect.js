@@ -26,10 +26,16 @@ function SignInRedirect ({ idToken }) {
   }
 
   return (
-    <NextSeo
-      noindex
-      title='Redirecting'
-    />
+    <>
+      <NextSeo
+        noindex
+        title='Redirecting'
+      />
+
+      <div>
+        Signing you in, please wait...
+      </div>
+    </>
   );
 }
 
