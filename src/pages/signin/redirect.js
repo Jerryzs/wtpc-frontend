@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { OAuth2Client } from 'google-auth-library';
 
@@ -6,6 +7,7 @@ import { NextSeo } from 'next-seo';
 function SignInRedirect ({ idToken }) {
   const router = useRouter();
 
+  useEffect(() => {
     window.fetch($0.api.auth, {
       method: 'POST',
       headers: {
@@ -23,7 +25,7 @@ function SignInRedirect ({ idToken }) {
         router.push('/');
       }
     });
-  }
+  }, []);
 
   return (
     <>

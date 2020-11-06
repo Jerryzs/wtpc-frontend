@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { OAuth2Client } from 'google-auth-library';
 import { NextSeo } from 'next-seo';
@@ -5,13 +6,13 @@ import { NextSeo } from 'next-seo';
 import HTMLRedirect from '../../components/HtmlRedirect';
 
 function SignIn ({ url, user }) {
-  if (typeof window !== 'undefined') {
+  useEffect(() => {
     if (user.uid) {
       useRouter().replace(`/user/${user.uid}`);
     } else if (user.empty) {
       window.location.replace(url);
     }
-  }
+  }, []);
 
   return (
     <>
