@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { mutate } from 'swr';
 import { useRouter } from 'next/router';
 import { OAuth2Client } from 'google-auth-library';
 
@@ -20,6 +21,8 @@ function SignInRedirect ({ idToken }) {
         router.push('/signin');
         return;
       }
+
+      mutate($0.api.user);
 
       if (!res.newbie) {
         router.push('/');
