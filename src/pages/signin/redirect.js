@@ -3,15 +3,10 @@ import { OAuth2Client } from 'google-auth-library';
 
 import { NextSeo } from 'next-seo';
 
-const __api = {
-  auth: API + '/auth'
-};
-
 function SignInRedirect ({ idToken }) {
   const router = useRouter();
 
-  if (typeof window !== 'undefined') {
-    window.fetch(__api.auth, {
+    window.fetch($0.api.auth, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
