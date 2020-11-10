@@ -24,7 +24,7 @@ function Forum ({ user, data }) {
           className={styles.blocksWrapper}
         >
           {
-            Object.keys(data.blocks).map((category) => (
+            Object.keys(data.categories).map((category) => (
               <div
                 key={`c_${category}`}
                 className={styles.category}
@@ -39,7 +39,7 @@ function Forum ({ user, data }) {
                 }
 
                 {
-                  data.blocks[category].map((block, index) => (
+                  data.categories[category].blocks.map((block, index) => (
                     <LargeButton
                       key={`b_${index}`}
                       title={block.name}
