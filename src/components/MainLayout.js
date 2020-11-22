@@ -6,15 +6,11 @@ function MainLayout ({ user, children }) {
   return (
     <>
       <div
-        className='alert alert-warning text-center mb-0'
+        className='alert alert-warning text-center mb-0 d-none'
       >
         <div
           className='container'
-        >
-          This website is currently under heavy development.
-          Any actions done at this time are not guaranteed to remain when
-          this website is publicly available on the World Wide Web.
-        </div>
+        />
       </div>
 
       <header
