@@ -7,6 +7,10 @@ import { DefaultSeo } from 'next-seo';
 
 import MainLayout from '../components/MainLayout';
 
+if (typeof window !== 'undefined') {
+  require('bootstrap');
+}
+
 const __seo = {
   titleTemplate: '%s - WT Programming Club'
 };
