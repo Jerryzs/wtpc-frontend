@@ -10,7 +10,8 @@ const GlobalObject = {
   api: {
     forum: API + '/forum',
     auth: API + '/auth',
-    user: API + '/user'
+    user: API + '/user',
+    userCheck: API + '/user/check'
   }
 };
 
