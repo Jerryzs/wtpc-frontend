@@ -14,6 +14,7 @@ function Footer () {
         <br />
         All rights reserved.
       </div>
+
       <div
         className={styles.bottomLinks}
       >
@@ -26,7 +27,7 @@ function Footer () {
         </Link>
 
         <span
-          children='|'
+          children=' | '
         />
 
         <Link
@@ -38,7 +39,7 @@ function Footer () {
         </Link>
 
         <span
-          children='|'
+          children=' | '
         />
 
         <a
