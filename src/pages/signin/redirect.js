@@ -18,15 +18,13 @@ function SignInRedirect ({ idToken }) {
       body: 'token=' + idToken
     }).then((res) => res.json()).then((res) => {
       if (!res.success) {
-        router.push('/signin');
+        router.replace('/signin');
         return;
       }
 
-      mutate($0.api.user);
-
-      if (!res.newbie) {
-        router.push('/');
-      }
+      mutate($0.api.user).then(((isNewbie) => () =>
+        isNewbie ? router.replace('/signin/welcome') : router.replace('/')
+      )(res.newbie));
     });
   }, []);
 
