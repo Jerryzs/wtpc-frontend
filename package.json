@@ -17,7 +17,7 @@
     "@types/bootstrap": "^4.5.0",
     "@types/jquery": "^3.5.4",
     "@types/node": "^14.14.9",
-    "@types/react": "^16.9.55",
+    "@types/react": "^16.14.1",
     "@types/react-syntax-highlighter": "^13.5.0",
     "bootstrap": "^4.5.3",
     "google-auth-library": "^6.1.3",
