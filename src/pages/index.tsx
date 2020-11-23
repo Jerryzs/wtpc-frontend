@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 
-function Home () {
+function Home (): JSX.Element {
   return (
     <>
       <NextSeo

@@ -2,14 +2,16 @@ import { useRouter } from 'next/router';
 
 import { NextSeo } from 'next-seo';
 
-import HTMLRedirect from '../../components/HtmlRedirect';
+import HTMLRedirect from '../../components/HTMLRedirect';
 
-function SessionUser ({ user }) {
-  if (user.uid) {
+function SessionUser ({
+  user
+}: {
+  user: SessionUser
+}): JSX.Element {
+  if ($0.authed(user)) {
     useRouter().replace(`/user/${user.uid}`);
-  }
-
-  if (user.empty) {
+  } else {
     useRouter().replace('/signin');
   }
 

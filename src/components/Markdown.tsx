@@ -2,9 +2,13 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-function Markdown ({ children }) {
+function Markdown ({
+  children
+}: {
+  children: string
+}): JSX.Element {
   const renderers = {
-    blockquote: ({ children }) => {
+    blockquote: ({ children }: { children: React.ReactNode }) => {
       return (
         <blockquote
           children={children}
@@ -15,7 +19,7 @@ function Markdown ({ children }) {
         />
       );
     },
-    code: ({ language, value }) => {
+    code: ({ language, value }: { language: string, value: string }) => {
       return (
         <SyntaxHighlighter
           style={dark}

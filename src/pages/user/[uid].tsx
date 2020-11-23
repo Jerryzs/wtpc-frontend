@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+
+import { GetServerSideProps } from 'next';
+
 import Error from 'next/error';
 import { NextSeo } from 'next-seo';
 
@@ -6,16 +10,26 @@ import Markdown from '../../components/Markdown';
 
 import styles from '../../scss/pages/user/User.module.scss';
 
-function User ({ user, data }) {
-  var isCU = false;
-
-  if (!data.uid) {
+function User ({
+  user,
+  data
+}: {
+  user: SessionUser,
+  data: UserWithPage | undefined
+}): JSX.Element {
+  if (!data) {
     return <Error statusCode={404} />;
   }
 
-  if (!isCU && user.uid === data.uid) {
-    isCU = true;
-  }
+  const [isCU, setIsCU] = useState(false);
+
+  useEffect(() => {
+    if ($0.authed(user) && user.uid === data.uid) {
+      setIsCU(true);
+    } else {
+      setIsCU(false);
+    }
+  }, [user]);
 
   return (
     <>
@@ -51,18 +65,18 @@ function User ({ user, data }) {
   );
 }
 
-export async function getServerSideProps ({ params }) {
-  const props = {};
-  const uid = parseInt(params.uid, 10);
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const uid: number = parseInt(String(params?.uid), 10);
 
+  var data: UserWithPage | undefined;
   if (!isNaN(uid)) {
-    props.data = await $0.fetcher(`${$0.api.user}?uid=${uid}&userpage=1`);
-  } else {
-    props.data = {};
+    data = await $0.fetcher(`${$0.api.user}?uid=${uid}&userpage=1`) as UserWithPage;
   }
 
   return {
-    props: props
+    props: {
+      data: data
+    }
   };
 }
 

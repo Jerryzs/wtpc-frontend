@@ -8,7 +8,38 @@ import ProfilePanel from '../../components/ProfilePanel';
 
 import styles from '../../scss/pages/forum/index.module.scss';
 
-function Forum ({ user, data }) {
+type ForumBlock = {
+  category: number | null,
+  description: string,
+  icon: string,
+  id: number,
+  name: string
+}
+
+type CategoryBase = {
+  blocks: Array<ForumBlock>
+}
+
+type Category = CategoryBase & {
+  id: number,
+  name: string
+}
+
+type ForumData = {
+  categories: {
+    [cat: string]: Category
+  } & {
+    '0': CategoryBase
+  }
+}
+
+function Forum ({
+  user,
+  data
+}: {
+  user: SessionUser,
+  data: ForumData
+}): JSX.Element {
   data = useSWR($0.api.forum, $0.fetcher, { initialData: data }).data ?? {};
 
   return (

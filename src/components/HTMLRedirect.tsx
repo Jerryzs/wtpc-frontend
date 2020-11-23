@@ -1,4 +1,8 @@
-function HTMLRedirect ({ url }) {
+function HTMLRedirect ({
+  url
+}: {
+  url: string
+}): JSX.Element {
   return (
     <div>
       <div>

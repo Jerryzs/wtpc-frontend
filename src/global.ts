@@ -2,9 +2,18 @@
 
 const API = process.env.NEXT_PUBLIC_API;
 
+type RequestData = {
+  [key: string]: string
+}
+
 const GlobalObject = {
-  fetcher: (...args) => fetch(...args)
-    .then(res => res.json())
+  authed: (user: any): user is User => {
+    return !(user as NoUser).empty;
+  },
+
+  fetcher: (url: RequestInfo, init?: RequestInit) => fetch(url, init)
+    .then(res =>
+      res.json() as Promise<{ data: any, message: string, success: boolean }>)
     .then(res => { if (!res.success) throw Error(); return res.data; }),
 
   api: {
@@ -14,7 +23,7 @@ const GlobalObject = {
     userCheck: API + '/user/check'
   },
 
-  request: (url, data = {}) => new Promise((resolve, reject) => {
+  request: (url: string, data: RequestData = {}) => new Promise<any>((resolve, reject) => {
     url += '?' + Object.keys(data).map((key) => `${key}=${encodeURIComponent(data[key])}`).join('&');
 
     const request = new window.XMLHttpRequest();
@@ -33,7 +42,7 @@ const GlobalObject = {
     request.send();
   }),
 
-  post: (url, data = {}) => new Promise((resolve, reject) => {
+  post: (url: string, data: RequestData = {}) => new Promise<any>((resolve, reject) => {
     const raw = Object.keys(data).map((key) => `${key}=${encodeURIComponent(data[key])}`).join('&');
 
     const request = new window.XMLHttpRequest();

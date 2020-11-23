@@ -1,15 +1,22 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { OAuth2Client } from 'google-auth-library';
+
 import { NextSeo } from 'next-seo';
 
-import HTMLRedirect from '../../components/HtmlRedirect';
+import HTMLRedirect from '../../components/HTMLRedirect';
 
-function SignIn ({ url, user }) {
+function SignIn ({
+  url,
+  user
+}: {
+  url: string,
+  user: SessionUser
+}): JSX.Element {
   useEffect(() => {
-    if (user.uid) {
+    if ($0.authed(user)) {
       useRouter().replace(`/user/${user.uid}`);
-    } else if (user.empty) {
+    } else {
       window.location.replace(url);
     }
   }, []);

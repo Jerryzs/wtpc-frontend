@@ -11,10 +11,19 @@ const __navitems = [{
   href: '/forum'
 }];
 
-function NavigationBar ({ user, data }) {
+function NavigationBar ({
+  user,
+  data
+}: {
+  user: SessionUser,
+  data?: Array<{
+    name: string,
+    href: string
+  }>
+}): JSX.Element {
   const navs = (data?.length ? data : __navitems).slice(0);
 
-  if (user.uid) {
+  if ($0.authed(user)) {
     navs.push({
       name: user.name,
       href: `/user/${user.uid}`

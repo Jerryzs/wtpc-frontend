@@ -3,9 +3,16 @@ import { mutate } from 'swr';
 import { useRouter } from 'next/router';
 import { OAuth2Client } from 'google-auth-library';
 
+import { GetServerSideProps } from 'next';
+import { Credentials } from 'google-auth-library';
+
 import { NextSeo } from 'next-seo';
 
-function SignInRedirect ({ idToken }) {
+function SignInRedirect ({
+  idToken
+}: {
+  idToken: string
+}): JSX.Element {
   const router = useRouter();
 
   useEffect(() => {
@@ -42,23 +49,23 @@ function SignInRedirect ({ idToken }) {
   );
 }
 
-export async function getServerSideProps ({ query }) {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const oauth2 = new OAuth2Client(
     process.env.GOOGLE_AUTH_CLIENT_ID,
     process.env.GOOGLE_AUTH_CLIENT_SECRET,
     'http://localhost:3000/signin/redirect'
   );
 
-  var tokens;
+  var tokens: Credentials | undefined;
   try {
-    tokens = await oauth2.getToken(query.code).then(res => res.tokens);
+    tokens = await oauth2.getToken(query.code as string).then(res => res.tokens);
   } catch (e) {
-    tokens = '';
+    tokens = undefined;
   }
 
   return {
     props: {
-      idToken: tokens && tokens.id_token
+      idToken: tokens?.id_token ?? ''
     }
   };
 }

@@ -13,7 +13,15 @@ const __navitems = [{
   icon: '/assets/icons/forum.svg'
 }];
 
-function MobileNavigation ({ data }) {
+function MobileNavigation ({
+  data
+}: {
+  data?: Array<{
+    name: string,
+    href: string,
+    icon: string
+  }>
+}): JSX.Element {
   const navs = data?.length ? data : __navitems;
 
   return (

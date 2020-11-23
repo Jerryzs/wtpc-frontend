@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from '../scss/components/Footer.module.scss';
 
-function Footer () {
+function Footer (): JSX.Element {
   return (
     <div
       className={`${styles.wrapper} container`}
