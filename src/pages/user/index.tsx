@@ -7,10 +7,12 @@ function SessionUser ({
 }: {
   user: SessionUser
 }): JSX.Element {
+  const router = useRouter()
+
   if ($0.authed(user)) {
-    useRouter().replace(`/user/${user.uid}`).then(null, null)
+    router.replace(`/user/${user.uid}`).then(null, null)
   } else {
-    useRouter().replace('/signin').then(null, null)
+    router.replace('/signin').then(null, null)
   }
 
   return (
