@@ -14,7 +14,7 @@
   "contributors": [],
   "license": "UNLICENSED",
   "dependencies": {
-    "@types/bootstrap": "4.5.x",
+    "@types/bootstrap": "5.0.x",
     "@types/jquery": "^3.5.4",
     "@types/node": "^14.14.9",
     "@types/react": "16.14.x",
