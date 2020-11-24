@@ -34,18 +34,8 @@
     "swr": "^0.3.8"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint-config-standard": "^13.0.1",
     "ts-standard": "^9.0.0",
     "typescript": "^4.1.2"
-  },
-  "semistandard": {
-    "globals": [
-      "$0",
-      "CDN",
-      "API"
-    ],
-    "parser": "babel-eslint"
   },
   "browser": {
     "child_process": false
