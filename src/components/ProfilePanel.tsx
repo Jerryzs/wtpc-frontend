@@ -1,31 +1,38 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import Badge from './Badge'
+import Markdown from './Markdown'
+import styles from '../scss/components/ProfilePanel.module.scss'
 
-import Badge from './Badge';
-import Markdown from './Markdown';
+function ProfilePanel<User extends UserBase> ({
+  user,
+  className = '',
+  large = false,
+  link = false
+}: {
+  user: User | NoUser
+  className?: string
+  large?: boolean
+  link?: boolean
+}): JSX.Element {
+  const router = useRouter()
 
-import styles from '../scss/components/ProfilePanel.module.scss';
-
-function ProfilePanel ({ className, large, link, user }) {
-  const router = useRouter();
-
-  user = Object.assign({
-    name: 'Not signed in',
-    picture: '/assets/icons/person.svg',
-    lv: {
-      id: 0,
-      name: 'Visitor',
-      text_color: '#ffffff',
-      color: '#6c757d'
+  if (!$0.authed(user)) {
+    const guest: UserBase = {
+      name: 'Not signed in',
+      picture: '/assets/icons/person.svg',
+      lv: {
+        id: 0,
+        name: 'Visitor',
+        text_color: '#ffffff',
+        color: '#6c757d'
+      }
     }
-  }, user);
-
-  if (!user.uid) {
-    link = false;
+    user = guest as User
   }
 
-  function handlePanelClick () {
-    if (link) {
-      router.replace(`/user/${user.uid}`);
+  function handlePanelClick (): void {
+    if (link && $0.authed(user)) {
+      router.replace(`/user/${user.uid}`).then(null, null)
     }
   }
 
@@ -33,14 +40,14 @@ function ProfilePanel ({ className, large, link, user }) {
     <div
       className={`${styles.wrapper} ${className}`.trim()}
       style={{
-        width: !large ? '196px' : '255px',
-        minWidth: !large ? '196px' : '255px',
-        cursor: !link ? 'default' : 'pointer'
+        width: large === undefined || !large ? '196px' : '255px',
+        minWidth: large === undefined || !large ? '196px' : '255px',
+        cursor: link === undefined || !link ? 'default' : 'pointer'
       }}
       onClick={handlePanelClick}
     >
       {
-        !user.picture ? undefined : (
+        user.picture === '' ? undefined : (
           <img
             src={user.picture}
           />
@@ -56,9 +63,9 @@ function ProfilePanel ({ className, large, link, user }) {
       </div>
 
       {
-        !large || !user.verify ? undefined : (
+        !(large && ($0.authed(user) && user.verify !== null)) ? undefined : (
           <Badge
-            text={`${user.verify.message}`}
+            text={user.verify.message}
             color={user.verify.text_color}
             bgColor={user.verify.color}
           />
@@ -72,7 +79,7 @@ function ProfilePanel ({ className, large, link, user }) {
           className={styles.level}
         >
           {
-            !user.uid ? undefined : (
+            !$0.authed(user) ? undefined : (
               <span
                 className={styles.exp}
               >
@@ -89,7 +96,7 @@ function ProfilePanel ({ className, large, link, user }) {
         </div>
 
         {
-          !user.is_member ? undefined : (
+          !($0.authed(user) && user.is_member !== 0) ? undefined : (
             <Badge
               text={!large ? 'Member' : 'Programming Club Member'}
               bgColor='#28a745'
@@ -98,7 +105,7 @@ function ProfilePanel ({ className, large, link, user }) {
         }
 
         {
-          !user.is_moderator ? undefined : (
+          !($0.authed(user) && user.is_moderator !== 0) ? undefined : (
             <Badge
               text='Moderator'
               bgColor='#17a2b8'
@@ -107,7 +114,7 @@ function ProfilePanel ({ className, large, link, user }) {
         }
 
         {
-          large || !user.verify ? undefined : (
+          !(!large && ($0.authed(user) && user.verify !== null)) ? undefined : (
             <Badge
               text={user.verify.tag}
               color={user.verify.text_color}
@@ -118,7 +125,7 @@ function ProfilePanel ({ className, large, link, user }) {
       </div>
 
       {
-        !large ? undefined : (
+        !(large && $0.authed(user)) ? undefined : (
           <div
             className={styles.bio}
           >
@@ -129,7 +136,7 @@ function ProfilePanel ({ className, large, link, user }) {
         )
       }
     </div>
-  );
+  )
 }
 
-export default ProfilePanel;
+export default ProfilePanel

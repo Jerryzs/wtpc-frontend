@@ -1,8 +1,14 @@
-import NavigationBar from './NavigationBar';
-import MobileNavigation from './MobileNavigation';
-import Footer from './Footer';
+import NavigationBar from './NavigationBar'
+import MobileNavigation from './MobileNavigation'
+import Footer from './Footer'
 
-function MainLayout ({ user, children }) {
+function MainLayout ({
+  user,
+  children
+}: {
+  user: SessionUser
+  children: React.ReactNode
+}): JSX.Element {
   return (
     <>
       <div
@@ -35,7 +41,7 @@ function MainLayout ({ user, children }) {
 
       <MobileNavigation />
     </>
-  );
+  )
 }
 
-export default MainLayout;
+export default MainLayout

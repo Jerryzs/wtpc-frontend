@@ -1,15 +1,45 @@
-import useSWR from 'swr';
+import useSWR from 'swr'
+import { NextSeo } from 'next-seo'
+import LargeButton from '../../components/LargeButton'
+import HorizontalDivider from '../../components/HorizontalDivider'
+import ProfilePanel from '../../components/ProfilePanel'
+import styles from '../../scss/pages/forum/index.module.scss'
+import type { GetStaticProps } from 'next'
 
-import { NextSeo } from 'next-seo';
+interface ForumBlockBase {
+  category: number | null
+  description: string
+  icon: string
+  id: number
+  name: string
+}
 
-import LargeButton from '../../components/LargeButton';
-import HorizontalDivider from '../../components/HorizontalDivider';
-import ProfilePanel from '../../components/ProfilePanel';
+interface CategoryZero {
+  blocks: Array<ForumBlockBase & { category: null }>
+}
 
-import styles from '../../scss/pages/forum/index.module.scss';
+interface Category {
+  blocks: Array<ForumBlockBase & { category: number}>
+  id: number
+  name: string
+}
 
-function Forum ({ user, data }) {
-  data = useSWR($0.api.forum, $0.fetcher, { initialData: data }).data ?? {};
+interface ForumData {
+  categories: {
+    [cat: string]: Category
+  } & {
+    '0': CategoryZero
+  }
+}
+
+function Forum ({
+  user,
+  data
+}: {
+  user: SessionUser
+  data: ForumData
+}): JSX.Element {
+  data = useSWR($0.api.forum, $0.fetcher, { initialData: data }).data ?? {}
 
   return (
     <>
@@ -67,17 +97,12 @@ function Forum ({ user, data }) {
         />
       </div>
     </>
-  );
+  )
 }
 
-export async function getStaticProps () {
-  const data = await $0.fetcher($0.api.forum);
-
-  return {
-    props: {
-      data: data
-    }
-  };
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await $0.fetcher($0.api.forum)
+  return { props: { data } }
 }
 
-export default Forum;
+export default Forum

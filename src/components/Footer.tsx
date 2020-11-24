@@ -1,8 +1,7 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import styles from '../scss/components/Footer.module.scss'
 
-import styles from '../scss/components/Footer.module.scss';
-
-function Footer () {
+function Footer (): JSX.Element {
   return (
     <div
       className={`${styles.wrapper} container`}
@@ -51,7 +50,7 @@ function Footer () {
         </a>
       </div>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

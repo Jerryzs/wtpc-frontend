@@ -1,29 +1,37 @@
-import Link from './Link';
+import Link from './Link'
+import styles from '../scss/components/NavigationBar.module.scss'
 
-import styles from '../scss/components/NavigationBar.module.scss';
-
-const __navitems = [{
+const NAVITEMS = [{
   name: 'Home',
   href: '/'
 },
 {
   name: 'Forum',
   href: '/forum'
-}];
+}]
 
-function NavigationBar ({ user, data }) {
-  const navs = (data?.length ? data : __navitems).slice(0);
+function NavigationBar ({
+  user,
+  data
+}: {
+  user: SessionUser
+  data?: Array<{
+    name: string
+    href: string
+  }>
+}): JSX.Element {
+  const navs = (data?.length !== undefined ? data : NAVITEMS).slice(0)
 
-  if (user.uid) {
+  if ($0.authed(user)) {
     navs.push({
       name: user.name,
       href: `/user/${user.uid}`
-    });
+    })
   } else {
     navs.push({
       name: 'Sign in',
       href: '/signin'
-    });
+    })
   }
 
   return (
@@ -71,7 +79,7 @@ function NavigationBar ({ user, data }) {
         </ul>
       </div>
     </nav>
-  );
+  )
 }
 
-export default NavigationBar;
+export default NavigationBar

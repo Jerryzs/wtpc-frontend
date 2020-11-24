@@ -1,10 +1,14 @@
-import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 
-function Markdown ({ children }) {
+function Markdown ({
+  children
+}: {
+  children: string
+}): JSX.Element {
   const renderers = {
-    blockquote: ({ children }) => {
+    blockquote: ({ children }: { children: React.ReactNode }) => {
       return (
         <blockquote
           children={children}
@@ -13,18 +17,18 @@ function Markdown ({ children }) {
             borderLeft: '0.25rem solid #f8f9fa'
           }}
         />
-      );
+      )
     },
-    code: ({ language, value }) => {
+    code: ({ language, value }: { language: string, value: string }) => {
       return (
         <SyntaxHighlighter
           style={dark}
           language={language}
           children={value}
         />
-      );
+      )
     }
-  };
+  }
 
   return (
     <ReactMarkdown
@@ -34,7 +38,7 @@ function Markdown ({ children }) {
       renderers={renderers}
       children={children}
     />
-  );
+  )
 }
 
 const dark = {
@@ -182,6 +186,6 @@ const dark = {
   deleted: {
     color: 'red'
   }
-};
+}
 
-export default Markdown;
+export default Markdown

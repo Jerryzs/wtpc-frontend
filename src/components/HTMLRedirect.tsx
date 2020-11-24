@@ -1,4 +1,8 @@
-function HTMLRedirect ({ url }) {
+function HTMLRedirect ({
+  url
+}: {
+  url: string
+}): JSX.Element {
   return (
     <div>
       <div>
@@ -10,7 +14,7 @@ function HTMLRedirect ({ url }) {
         Click <a href={url}>here</a> if you have been staring at this message for 10 seconds.
       </span>
     </div>
-  );
+  )
 }
 
-export default HTMLRedirect;
+export default HTMLRedirect

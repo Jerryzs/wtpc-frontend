@@ -1,6 +1,6 @@
-import { NextSeo } from 'next-seo';
+import { NextSeo } from 'next-seo'
 
-function Home () {
+function Home (): JSX.Element {
   return (
     <>
       <NextSeo
@@ -9,7 +9,7 @@ function Home () {
 
       <div>Welcome to Programming Club!</div>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
