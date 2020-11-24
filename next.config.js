@@ -4,7 +4,7 @@ module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins.push(
       new webpack.ProvidePlugin({
-        $0: [path.resolve(__dirname, 'src/global.js'), 'default']
+        $0: [path.resolve(__dirname, 'src/global.ts'), 'default']
       }),
       new webpack.DefinePlugin({
         CDN: JSON.stringify(process.env.NEXT_PUBLIC_CDN)
