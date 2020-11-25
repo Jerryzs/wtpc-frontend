@@ -4,6 +4,7 @@ import LargeButton from '../../components/LargeButton'
 import HorizontalDivider from '../../components/HorizontalDivider'
 import ProfilePanel from '../../components/ProfilePanel'
 import styles from '../../scss/pages/forum/index.module.scss'
+
 import type { GetStaticProps } from 'next'
 
 interface ForumBlockBase {

@@ -3,6 +3,7 @@ import { mutate } from 'swr'
 import { useRouter } from 'next/router'
 import { OAuth2Client, Credentials } from 'google-auth-library'
 import { NextSeo } from 'next-seo'
+
 import type { GetServerSideProps } from 'next'
 
 function SignInRedirect ({

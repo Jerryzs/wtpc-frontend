@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { OAuth2Client } from 'google-auth-library'
 import { NextSeo } from 'next-seo'
 import HTMLRedirect from '../../components/HTMLRedirect'
+
 import type { GetStaticProps } from 'next'
 
 function SignIn ({

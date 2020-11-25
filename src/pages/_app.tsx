@@ -2,9 +2,7 @@ import '../global'
 import '../scss/global.scss'
 
 import useSWR from 'swr'
-
 import { DefaultSeo } from 'next-seo'
-
 import MainLayout from '../components/MainLayout'
 
 import type { AppProps } from 'next/app'

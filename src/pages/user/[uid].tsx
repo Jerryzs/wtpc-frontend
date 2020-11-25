@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo'
 import ProfilePanel from '../../components/ProfilePanel'
 import Markdown from '../../components/Markdown'
 import styles from '../../scss/pages/user/User.module.scss'
+
 import type { GetServerSideProps } from 'next'
 
 function User ({
