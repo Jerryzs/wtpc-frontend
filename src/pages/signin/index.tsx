@@ -11,16 +11,17 @@ function SignIn ({
 }: {
   url: string
   user: SessionUser
-}): JSX.Element {
+}): JSX.Element | null {
   const router = useRouter()
 
   useEffect(() => {
-    if ($0.authed(user)) {
+    if ($0.isUser(user)) {
       router.replace(`/user/${user.uid}`).then(null, null)
-    } else {
-      window.location.replace(url)
     }
-  }, [])
+    if ($0.noAuth(user)) {
+      router.replace('/signin').then(null, null)
+    }
+  }, [user])
 
   return (
     <>

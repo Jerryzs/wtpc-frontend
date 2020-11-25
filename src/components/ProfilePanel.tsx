@@ -16,7 +16,7 @@ function ProfilePanel<User extends UserBase> ({
 }): JSX.Element {
   const router = useRouter()
 
-  if (!$0.authed(user)) {
+  if (!$0.isUser(user)) {
     const guest: UserBase = {
       name: 'Not signed in',
       picture: '/assets/icons/person.svg',
@@ -31,7 +31,7 @@ function ProfilePanel<User extends UserBase> ({
   }
 
   function handlePanelClick (): void {
-    if (link && $0.authed(user)) {
+    if (link && $0.isUser(user)) {
       router.replace(`/user/${user.uid}`).then(null, null)
     }
   }
@@ -63,7 +63,7 @@ function ProfilePanel<User extends UserBase> ({
       </div>
 
       {
-        !(large && ($0.authed(user) && user.verify !== null)) ? undefined : (
+        !(large && ($0.isUser(user) && user.verify !== null)) ? undefined : (
           <Badge
             text={user.verify.message}
             color={user.verify.text_color}
@@ -79,7 +79,7 @@ function ProfilePanel<User extends UserBase> ({
           className={styles.level}
         >
           {
-            !$0.authed(user) ? undefined : (
+            !$0.isUser(user) ? undefined : (
               <span
                 className={styles.exp}
               >
@@ -96,7 +96,7 @@ function ProfilePanel<User extends UserBase> ({
         </div>
 
         {
-          !($0.authed(user) && user.is_member !== 0) ? undefined : (
+          !($0.isUser(user) && user.is_member !== 0) ? undefined : (
             <Badge
               text={!large ? 'Member' : 'Programming Club Member'}
               bgColor='#28a745'
@@ -105,7 +105,7 @@ function ProfilePanel<User extends UserBase> ({
         }
 
         {
-          !($0.authed(user) && user.is_moderator !== 0) ? undefined : (
+          !($0.isUser(user) && user.is_moderator !== 0) ? undefined : (
             <Badge
               text='Moderator'
               bgColor='#17a2b8'
@@ -114,7 +114,7 @@ function ProfilePanel<User extends UserBase> ({
         }
 
         {
-          !(!large && ($0.authed(user) && user.verify !== null)) ? undefined : (
+          !(!large && ($0.isUser(user) && user.verify !== null)) ? undefined : (
             <Badge
               text={user.verify.tag}
               color={user.verify.text_color}
@@ -125,7 +125,7 @@ function ProfilePanel<User extends UserBase> ({
       </div>
 
       {
-        !(large && $0.authed(user)) ? undefined : (
+        !(large && $0.isUser(user)) ? undefined : (
           <div
             className={styles.bio}
           >

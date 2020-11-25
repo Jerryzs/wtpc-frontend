@@ -20,7 +20,7 @@ function User ({
   const [, setIsCU] = useState(false)
 
   useEffect(() => {
-    if ($0.authed(user) && user.uid === data.uid) {
+    if ($0.isUser(user) && user.uid === data.uid) {
       setIsCU(true)
     } else {
       setIsCU(false)

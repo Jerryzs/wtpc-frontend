@@ -7,8 +7,12 @@ interface RequestData {
 }
 
 const GlobalObject = {
-  authed: (user: any): user is User => {
-    return !(user as NoUser).empty
+  isUser: (user: any): user is User => {
+    return user !== undefined && user.uid !== undefined
+  },
+
+  noAuth: (user: any): user is NoUser => {
+    return user !== undefined && user.empty === true
   },
 
   fetcher: async (url: RequestInfo, init?: RequestInit) =>

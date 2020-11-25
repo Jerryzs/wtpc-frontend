@@ -22,7 +22,7 @@ function NavigationBar ({
 }): JSX.Element {
   const navs = (data?.length !== undefined ? data : NAVITEMS).slice(0)
 
-  if ($0.authed(user)) {
+  if ($0.isUser(user)) {
     navs.push({
       name: user.name,
       href: `/user/${user.uid}`
