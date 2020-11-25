@@ -11,7 +11,7 @@ function HTMLRedirect ({
       <span
         className='text-gray-light small'
       >
-        Click <a href={url}>here</a> if you have been staring at this message for 10 seconds.
+        Click <a href={url}>here</a> if you have been seeing this message for 10 seconds.
       </span>
     </div>
   )
