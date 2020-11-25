@@ -1,15 +1,6 @@
 import Link from './Link'
 import styles from '../scss/components/NavigationBar.module.scss'
 
-const NAVITEMS = [{
-  name: 'Home',
-  href: '/'
-},
-{
-  name: 'Forum',
-  href: '/forum'
-}]
-
 function NavigationBar ({
   user,
   data
@@ -20,7 +11,7 @@ function NavigationBar ({
     href: string
   }>
 }): JSX.Element {
-  const navs = (data?.length !== undefined ? data : NAVITEMS).slice(0)
+  const navs = data.slice(0)
 
   if ($0.isUser(user)) {
     navs.push({

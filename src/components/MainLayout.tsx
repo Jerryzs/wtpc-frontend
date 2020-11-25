@@ -1,6 +1,7 @@
 import NavigationBar from './NavigationBar'
 import MobileNavigation from './MobileNavigation'
 import Footer from './Footer'
+import $c from '../configs/global.config';
 
 function MainLayout ({
   user,
@@ -24,6 +25,7 @@ function MainLayout ({
       >
         <NavigationBar
           user={user}
+          data={$c.navigations}
         />
       </header>
 
@@ -39,7 +41,9 @@ function MainLayout ({
         <Footer />
       </footer>
 
-      <MobileNavigation />
+      <MobileNavigation
+        data={$c.navigations}
+      />
     </>
   )
 }

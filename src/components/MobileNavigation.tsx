@@ -1,17 +1,6 @@
 import Link from './Link'
 import styles from '../scss/components/MobileNavigation.module.scss'
 
-const NAVITEMS = [{
-  name: 'Home',
-  href: '/',
-  icon: '/assets/icons/home.svg'
-},
-{
-  name: 'Forum',
-  href: '/forum',
-  icon: '/assets/icons/forum.svg'
-}]
-
 function MobileNavigation ({
   data
 }: {
@@ -21,7 +10,7 @@ function MobileNavigation ({
     icon: string
   }>
 }): JSX.Element {
-  const navs = data?.length !== undefined ? data : NAVITEMS
+  const navs = data
 
   return (
     <nav
