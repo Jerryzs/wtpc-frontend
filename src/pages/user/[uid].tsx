@@ -42,7 +42,7 @@ function User ({
         >
           <ProfilePanel
             large
-            user={data}
+            data={data}
           />
         </div>
 

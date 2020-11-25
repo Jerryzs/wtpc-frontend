@@ -3,21 +3,22 @@ import Badge from './Badge'
 import Markdown from './Markdown'
 import styles from '../scss/components/ProfilePanel.module.scss'
 
-function ProfilePanel<User extends UserBase> ({
-  user,
+function ProfilePanel ({
+  data,
   className = '',
   large = false,
   link = false
 }: {
-  user: User | NoUser
+  data?: User | NoUser
   className?: string
   large?: boolean
   link?: boolean
 }): JSX.Element {
   const router = useRouter()
+  var _user: User | UserBase
 
-  if (!$0.isUser(user)) {
-    const guest: UserBase = {
+  if (!$0.isUser(data)) {
+    _user = {
       name: 'Not signed in',
       picture: '/assets/icons/person.svg',
       lv: {
@@ -27,12 +28,13 @@ function ProfilePanel<User extends UserBase> ({
         color: '#6c757d'
       }
     }
-    user = guest as User
+  } else {
+    _user = data
   }
 
   function handlePanelClick (): void {
-    if (link && $0.isUser(user)) {
-      router.replace(`/user/${user.uid}`).then(null, null)
+    if (link && $0.isUser(_user)) {
+      router.replace(`/user/${_user.uid}`).then(null, null)
     }
   }
 
@@ -47,9 +49,9 @@ function ProfilePanel<User extends UserBase> ({
       onClick={handlePanelClick}
     >
       {
-        user.picture === '' ? undefined : (
+        _user.picture === '' ? undefined : (
           <img
-            src={user.picture}
+            src={_user.picture}
           />
         )
       }
@@ -59,15 +61,15 @@ function ProfilePanel<User extends UserBase> ({
           fontSize: !large ? '1rem' : '1.15rem'
         }}
       >
-        {user.name}
+        {_user.name}
       </div>
 
       {
-        !(large && ($0.isUser(user) && user.verify !== null)) ? undefined : (
+        !(large && ($0.isUser(_user) && _user.verify !== null)) ? undefined : (
           <Badge
-            text={user.verify.message}
-            color={user.verify.text_color}
-            bgColor={user.verify.color}
+            text={_user.verify.message}
+            color={_user.verify.text_color}
+            bgColor={_user.verify.color}
           />
         )
       }
@@ -79,24 +81,24 @@ function ProfilePanel<User extends UserBase> ({
           className={styles.level}
         >
           {
-            !$0.isUser(user) ? undefined : (
+            !$0.isUser(_user) ? undefined : (
               <span
                 className={styles.exp}
               >
-                Exp: {user.exp}
+                Exp: {_user.exp}
               </span>
             )
           }
 
           <Badge
-            text={`Lv${user.lv.id}: ${user.lv.name}`}
-            color={user.lv.text_color}
-            bgColor={user.lv.color}
+            text={`Lv${_user.lv.id}: ${_user.lv.name}`}
+            color={_user.lv.text_color}
+            bgColor={_user.lv.color}
           />
         </div>
 
         {
-          !($0.isUser(user) && user.is_member !== 0) ? undefined : (
+          !($0.isUser(_user) && _user.is_member !== 0) ? undefined : (
             <Badge
               text={!large ? 'Member' : 'Programming Club Member'}
               bgColor='#28a745'
@@ -105,7 +107,7 @@ function ProfilePanel<User extends UserBase> ({
         }
 
         {
-          !($0.isUser(user) && user.is_moderator !== 0) ? undefined : (
+          !($0.isUser(_user) && _user.is_moderator !== 0) ? undefined : (
             <Badge
               text='Moderator'
               bgColor='#17a2b8'
@@ -114,23 +116,23 @@ function ProfilePanel<User extends UserBase> ({
         }
 
         {
-          !(!large && ($0.isUser(user) && user.verify !== null)) ? undefined : (
+          !(!large && ($0.isUser(_user) && _user.verify !== null)) ? undefined : (
             <Badge
-              text={user.verify.tag}
-              color={user.verify.text_color}
-              bgColor={user.verify.color}
+              text={_user.verify.tag}
+              color={_user.verify.text_color}
+              bgColor={_user.verify.color}
             />
           )
         }
       </div>
 
       {
-        !(large && $0.isUser(user)) ? undefined : (
+        !(large && $0.isUser(_user)) ? undefined : (
           <div
             className={styles.bio}
           >
             <Markdown
-              children={user.bio}
+              children={_user.bio}
             />
           </div>
         )

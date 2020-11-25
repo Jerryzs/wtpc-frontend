@@ -87,7 +87,7 @@ function Forum ({
           className={styles.profileWrapper}
         >
           <ProfilePanel
-            user={user}
+            data={user}
           />
         </div>
 
