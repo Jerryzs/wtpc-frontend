@@ -21,10 +21,10 @@ function App ({
   Component,
   pageProps
 }: AppProps): JSX.Element {
-  const user = useSWR(
+  const user: SessionUser = useSWR(
     $0.api.user,
     async (url: string) => await $0.fetcher(url, { credentials: 'include' })
-  ).data ?? {}
+  ).data
 
   return (
     <>

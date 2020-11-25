@@ -47,5 +47,5 @@ declare global {
     empty: true
   }
 
-  type SessionUser = User | NoUser
+  type SessionUser = User | NoUser | undefined
 }
