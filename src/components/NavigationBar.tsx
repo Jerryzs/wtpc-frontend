@@ -6,10 +6,10 @@ function NavigationBar ({
   data
 }: {
   user: SessionUser
-  data?: Array<{
+  data: ReadonlyArray<Readonly<{
     name: string
     href: string
-  }>
+  }>>
 }): JSX.Element {
   const navs = data.slice(0)
 

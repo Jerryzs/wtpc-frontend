@@ -4,11 +4,11 @@ import styles from '../scss/components/MobileNavigation.module.scss'
 function MobileNavigation ({
   data
 }: {
-  data?: Array<{
+  data: ReadonlyArray<Readonly<{
     name: string
     href: string
     icon: string
-  }>
+  }>>
 }): JSX.Element {
   const navs = data
 
