@@ -8,7 +8,7 @@ interface RequestData {
 
 const GlobalObject = {
   isUser: (user: any): user is User => {
-    return user !== undefined && user.uid !== undefined
+    return user?.uid !== undefined
   },
 
   noAuth: (user: any): user is NoUser => {
