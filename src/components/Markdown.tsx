@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import styles from '../scss/components/Markdown.module.scss'
 
 function Markdown ({
   children
@@ -32,6 +33,7 @@ function Markdown ({
 
   return (
     <ReactMarkdown
+      className={styles.wrapper}
       plugins={[
         [gfm]
       ]}
