@@ -20,7 +20,7 @@ function SignIn ({
       router.replace(`/user/${user.uid}`).then(null, null)
     }
     if ($0.noAuth(user)) {
-      router.replace('/signin').then(null, null)
+      window.location.replace(url)
     }
   }, [user])
 
