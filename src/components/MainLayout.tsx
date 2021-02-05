@@ -1,7 +1,6 @@
 import NavigationBar from './NavigationBar'
 import MobileNavigation from './MobileNavigation'
 import Footer from './Footer'
-import $c from '../configs/global.config'
 
 function MainLayout ({
   user,
@@ -25,7 +24,16 @@ function MainLayout ({
       >
         <NavigationBar
           user={user}
-          data={$c.navigations}
+          data={[
+            {
+              name: 'Home',
+              href: '/'
+            },
+            {
+              name: 'Forum',
+              href: '/forum'
+            }
+          ]}
         />
       </header>
 
@@ -42,7 +50,18 @@ function MainLayout ({
       </footer>
 
       <MobileNavigation
-        data={$c.navigations}
+        data={[
+          {
+            name: 'Home',
+            href: '/',
+            icon: '/assets/icons/home.svg'
+          },
+          {
+            name: 'Forum',
+            href: '/forum',
+            icon: '/assets/icons/forum.svg'
+          }
+        ]}
       />
     </>
   )
