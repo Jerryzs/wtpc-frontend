@@ -21,7 +21,7 @@ function App ({
 }: AppProps): JSX.Element {
   const user: SessionUser = useSWR(
     $0.api.user.me,
-    async (url: string) => await $0.fetcher(url, { credentials: 'include' })
+    $0.authedFetcher
   ).data
 
   return (

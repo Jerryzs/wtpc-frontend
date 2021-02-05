@@ -25,6 +25,9 @@ const GlobalObject = {
         return res.data
       }),
 
+  authedFetcher: async (url: RequestInfo, init?: RequestInit) =>
+    await GlobalObject.fetcher(url, { ...(init ?? {}), credentials: 'include' }),
+
   api: {
     auth: API + '/auth',
     forum: {
