@@ -26,10 +26,18 @@ const GlobalObject = {
       }),
 
   api: {
-    forum: API + '/forum',
     auth: API + '/auth',
-    user: API + '/user',
-    userCheck: API + '/user/check'
+    forum: {
+      blocks: API + '/forum'
+    },
+    user: {
+      me: API + '/user',
+      check: API + '/user/check'
+    },
+    event: {
+      my: API + '/event',
+      all: API + '/event/all'
+    }
   },
 
   request: async (url: string, data: RequestData = {}) =>

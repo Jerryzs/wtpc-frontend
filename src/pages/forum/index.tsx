@@ -99,7 +99,7 @@ function Forum ({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await $0.fetcher($0.api.forum)
+  const data = await $0.fetcher($0.api.forum.blocks)
   return { props: { data } }
 }
 

@@ -18,7 +18,7 @@ function SignInRedirect ({
       token: idToken
     })
       .then((res: { newbie: boolean }) => {
-        mutate($0.api.user).then(((isNewbie: boolean) => () => {
+        mutate($0.api.user.me).then(((isNewbie: boolean) => () => {
           isNewbie
             ? router.replace('/signin/welcome').then(null, null)
             : router.replace('/').then(null, null)
