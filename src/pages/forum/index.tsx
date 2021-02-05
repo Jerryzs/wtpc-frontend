@@ -24,7 +24,7 @@ interface Category {
   name: string
 }
 
-interface ForumData {
+interface ForumBlocks {
   categories: {
     [cat: string]: Category
   } & {
@@ -34,10 +34,10 @@ interface ForumData {
 
 function Forum ({
   user,
-  data
+  blocks
 }: {
   user: SessionUser
-  data: ForumData
+  blocks: ForumBlocks
 }): JSX.Element {
   return (
     <>
@@ -52,7 +52,7 @@ function Forum ({
           className={styles.blocksWrapper}
         >
           {
-            Object.keys(data.categories).map((category) => (
+            Object.keys(blocks.categories).map((category) => (
               <div
                 key={`c_${category}`}
                 className={styles.category}
@@ -61,13 +61,13 @@ function Forum ({
                   category === '0' ? undefined : (
                     <HorizontalDivider
                       className={styles.divider}
-                      text={data.categories[category].name}
+                      text={blocks.categories[category].name}
                     />
                   )
                 }
 
                 {
-                  data.categories[category].blocks.map((block, index) => (
+                  blocks.categories[category].blocks.map((block, index) => (
                     <LargeButton
                       key={`b_${index}`}
                       title={block.name}
@@ -99,8 +99,8 @@ function Forum ({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await $0.fetcher($0.api.forum.blocks)
-  return { props: { data } }
+  const blocks = await $0.fetcher($0.api.forum.blocks)
+  return { props: { blocks } }
 }
 
 export default Forum
