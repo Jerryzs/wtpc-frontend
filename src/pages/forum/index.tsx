@@ -1,4 +1,3 @@
-import useSWR from 'swr'
 import { NextSeo } from 'next-seo'
 import LargeButton from '../../components/LargeButton'
 import HorizontalDivider from '../../components/HorizontalDivider'
@@ -40,8 +39,6 @@ function Forum ({
   user: SessionUser
   data: ForumData
 }): JSX.Element {
-  data = useSWR($0.api.forum, $0.fetcher, { initialData: data }).data ?? {}
-
   return (
     <>
       <NextSeo
