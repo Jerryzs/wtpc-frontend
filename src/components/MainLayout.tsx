@@ -1,7 +1,7 @@
 import NavigationBar from './NavigationBar'
 import MobileNavigation from './MobileNavigation'
 import Footer from './Footer'
-import $c from '../configs/global.config';
+import $c from '../configs/global.config'
 
 function MainLayout ({
   user,
