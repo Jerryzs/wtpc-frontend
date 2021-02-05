@@ -5,7 +5,7 @@
   "repository": "https://github.com/Jerryzs/programming-club-frontend",
   "private": true,
   "scripts": {
-    "dev": "ts-standard && next",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "format": "ts-standard --fix"
