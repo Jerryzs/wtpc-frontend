@@ -31,7 +31,7 @@
     "react-syntax-highlighter": "^15.4.3",
     "remark-gfm": "^1.0.0",
     "sass": "^1.32.8",
-    "swr": "^0.3.9"
+    "swr": "^0.5.5"
   },
   "devDependencies": {
     "ts-standard": "^10.0.0",
