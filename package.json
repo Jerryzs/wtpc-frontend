@@ -30,7 +30,7 @@
     "react-markdown": "^6.0.1",
     "react-syntax-highlighter": "^15.4.3",
     "remark-gfm": "^1.0.0",
-    "sass": "^1.32.11",
+    "sass": "^1.32.12",
     "swr": "^0.5.5"
   },
   "devDependencies": {
