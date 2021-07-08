@@ -20,7 +20,7 @@
     "@types/react": "^17.0.0",
     "@types/react-syntax-highlighter": "^13.5.1",
     "bootstrap": "~4.6.0",
-    "google-auth-library": "^7.2.0",
+    "google-auth-library": "^7.3.0",
     "jquery": "^3.6.0",
     "next": "10.2.3",
     "next-seo": "^4.26.0",
